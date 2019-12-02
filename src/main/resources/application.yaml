@@ -1,0 +1,29 @@
+server:
+  port: 8999
+  tomcat:
+    uri-encoding: UTF-8
+mybatis:
+  type-aliases-package: com.renshi.entity.User
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+spring:
+  application:
+    name: case
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+  thymeleaf:
+    encode: utf-8
+    cache: true
+    prefix: classpath:/templates/
+    check-template: true
+    suffix: .html
+    mode: HTML5
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  profiles:
+    active: dev

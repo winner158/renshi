@@ -1,0 +1,17 @@
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="UTF-8">
+    <title>页面消息提示</title>
+    <link th:href="@{/alert-common/window.css}" rel="stylesheet" />
+    <script th:src="@{/alert-common/jquery-1.7.1.min.js}"></script>
+    <script th:src="@{/alert-common/window.js}"></script>
+    <script th:inline="javascript">
+        window.onload=function(){
+            win.confirm('系统提示', [[${msg}]]);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
