@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>人事后台管理系统</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" th:href="@{/dist/css/AdminLTE.min.css}">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" th:href="@{/dist/css/skins/_all-skins.min.css}">
+    <!-- Select2 -->
+    <link rel="stylesheet" th:href="@{/plugins/select2/select2.min.css}">
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link rel="stylesheet" th:href="@{/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css}">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+    <div th:include="common/header::header"></div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h3>
+                当前位置：<b>奖金管理</b>
+            </h3>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body table-responsive no-padding">
+                            <div class="zhuce-box">
+                                <form id="add" autocomplete="off" th:action="@{/addJiangjinCheckAction}" th:method="post"  th:onsubmit="'return checkform()'">
+                                    <dl>
+                                        <dd class="top"><br>
+                                            培训员工&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <select name="userTruename">
+                                                <option th:each="user,userStat:${userList}" th:value="${user.id}" th:text="${user.truename}"></option>
+                                            </select>
+                                            <p class="prompot"></p>
+                                        </dd>
+
+                                        <dd class="top"><br>
+                                            发放事由&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <lable>
+                                                <input  type="text" placeholder="请输入奖金发放原因" name="content" id="content">
+                                            </lable>
+                                            <p class="prompot"></p>
+                                        </dd>
+                                        <dd>
+                                            发放日期&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <lable>
+                                                <input type="text"  placeholder="奖金发放日期" id="riqi" name="riqi">
+                                            </lable>
+                                            <p class="prompot"></p>
+                                        </dd>
+                                        <p style="color:red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+                                    </dl><br><br>
+                                    <div>
+                                        <input type="submit" value="提交" class="btn btn-success pull-left">
+                                        <input type="button" onclick="javascript:history.go(-1);"  class="btn btn-default pull-left" value="返回上一页">
+                                    </div>
+                                </form>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div>
+            </div>
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+    <div class="control-sidebar-bg"></div>
+</div><!-- ./wrapper -->
+
+<!-- jQuery 2.1.4 -->
+<script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="../bootstrap/js/bootstrap.min.js"></script>
+<!-- Slimscroll -->
+<script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../plugins/fastclick/fastclick.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../dist/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../dist/js/demo.js"></script>
+<script language="javascript" type="text/javascript">
+    function checkform()
+    {
+        if (document.getElementById('content').value=="")
+        {
+            alert("奖金发放事由不能为空");
+            return false;
+        }
+        if (document.getElementById('riqi').value=="")
+        {
+            alert("奖金发放金额不能为空");
+            return false;
+        }
+        return true;
+    }
+</script>
+</body>
+</html>
+</title>
+</head>
+<body>
+</body>
+</html>
