@@ -30,7 +30,7 @@ public class UserController implements CommandLineRunner{
     private BumenService bumenService;
 
     /**
-     * 登陆:
+     * 登陆://
      */
     @RequestMapping("/login")
     public String login() {
